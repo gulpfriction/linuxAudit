@@ -1,0 +1,22 @@
+<ion-header>
+ 
+</ion-header>
+
+<ion-content>
+    <ion-card text-center>
+        <ion-card-header>
+         ~~~ Linux Audit ~~~
+        </ion-card-header>
+        <ion-card-content>
+         Audit your Linux Host for security gaps
+        </ion-card-content>
+      </ion-card>
+
+      <ion-item>
+        <ion-input type="text" placeholder="Hostname/IP" [(ngModel)]="hostnameURL"></ion-input>
+      </ion-item>
+  
+      <ion-item text-center>
+        <button ion-button default (click)="formatHostname()" color="blue" [disabled]=!isTextBoxBlank()>Scan</button>
+      </ion-item>
+    </ion-content>

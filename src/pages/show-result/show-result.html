@@ -1,0 +1,208 @@
+<!--
+  Generated template for the ShowResultPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+    <button ion-button default (click)="homePage()" color="blue" >Back</button>  
+-->
+<ion-header>
+
+  <ion-navbar hideBackButton>  
+      <ion-buttons left>
+          <button ion-button icon-only (click)="homePage()" class="my-style-for-modal">
+              <ion-icon name="arrow-back"></ion-icon>
+          </button>
+      </ion-buttons>
+    
+      <ion-title text-center>Scan Result</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    
+    <ion-card *ngFor="let data of dataList">
+      <!--
+    <ion-card>
+      <ion-item>
+       <h2>AcceptEnv </h2>  
+       <p>{{data.AcceptEnv}}</p>
+       <ion-icon name="checkmark" item-right color="secondary"></ion-icon>
+       <ion-icon name="close"item-right color="danger"></ion-icon>
+     </ion-item>
+     </ion-card>
+
+
+    <ion-card>
+     <ion-item>
+       <h2>ChallengeResponseAuthentication</h2>
+        <p>{{data.ChallengeResponseAuthentication}}</p>
+        <ion-icon name="checkmark" item-right color="secondary"></ion-icon>
+        <ion-icon name="close"item-right color="danger"></ion-icon>
+        </ion-item>
+      </ion-card>
+
+    <ion-card>
+        <ion-item>
+           <h2>PrintMotd</h2>
+           <p>{{data.PrintMotd}}</p>
+           <ion-icon name="checkmark" item-right color="secondary"></ion-icon>
+           <ion-icon name="close"item-right color="danger"></ion-icon>
+        </ion-item>
+      </ion-card>
+      
+    <ion-card>
+         <ion-item>
+             <h2>Subsystem</h2>
+             <p>{{data.Subsystem}}</p>
+             <ion-icon name="checkmark" item-right color="secondary"></ion-icon>
+             <ion-icon name="close"item-right color="danger"></ion-icon>
+         </ion-item>
+        </ion-card>    
+        
+        <ion-card>
+            <ion-item>
+              <h1>Disable Host-Based Authentication</h1>
+              <div *ngIf="data.HostbasedAuthentication == 'yes'; else HostbasedAuthentication ">
+                 [failed]: Set to <i>{{data.HostbasedAuthentication}}</i>
+                 <ion-icon name="close"item-right color="danger"></ion-icon>
+              </div>
+   
+              <ng-template #HostbasedAuthentication >
+                  [Safe]: Set to <i>{{data.HostbasedAuthentication}}</i>
+               </ng-template>  
+               <ion-icon name="checkmark" item-right color="secondary"></ion-icon>    
+            </ion-item>
+           </ion-card>
+          -->
+           <!-- First Card Start-->
+          <ion-card>
+              <ion-item>
+                <h1>Disable Host-Based Authentication</h1>
+               <ng-container *ngIf="data.HostbasedAuthentication == 'yes'; else HostbasedAuthentication ">
+                  [failed]: Set to <i>{{data.HostbasedAuthentication}}</i>
+                   <ion-icon name="close"item-right color="danger"></ion-icon>
+                </ng-container>
+     
+                <ng-template #HostbasedAuthentication >
+           <ng-container *ngIf="data.HostbasedAuthentication == 'no'; else NotFound ">
+              [Safe]: Set to <i>{{data.HostbasedAuthentication}}</i>
+              <ion-icon name="checkmark" item-right color="secondary"></ion-icon> 
+            </ng-container>
+                 </ng-template> 
+           
+           <ng-template #NotFound>[failed]:<i>Value is not Set</i>
+            <ion-icon name="close"item-right color="danger"></ion-icon>
+          </ng-template>			
+           
+              </ion-item>
+             </ion-card>
+
+<!-- First Card End-->
+
+
+<!-- Second Card Start-->
+             <ion-card>
+                <ion-item>
+                  <h1>Disable Empty Passwords</h1>
+                 <ng-container *ngIf="data.PermitEmptyPasswords == 'yes'; else PermitEmptyPasswords ">
+                    [failed]: Set to <i>{{data.PermitEmptyPasswords}}</i>
+                     <ion-icon name="close"item-right color="danger"></ion-icon>
+                  </ng-container>
+       
+                  <ng-template #PermitEmptyPasswords >
+             <ng-container *ngIf="data.PermitEmptyPasswords == 'no'; else NotFoundPermitEmptyPasswords ">
+                [Safe]: Set to <i>{{data.PermitEmptyPasswords}}</i>
+                <ion-icon name="checkmark" item-right color="secondary"></ion-icon> 
+              </ng-container>
+                   </ng-template> 
+             
+             <ng-template #NotFoundPermitEmptyPasswords>[failed]:<i>Value is not Set</i>
+              <ion-icon name="close"item-right color="danger"></ion-icon>
+            </ng-template>			
+             
+                </ion-item>
+               </ion-card>
+<!-- Second Card End-->
+
+
+<!-- Third Card Start-->
+               <ion-card>
+                  <ion-item>
+                    <h1>Disable Root Login</h1>
+                   <ng-container *ngIf="data.PermitRootLogin == 'yes'; else PermitRootLogin ">
+                      [failed]: Set to <i>{{data.PermitRootLogin}}</i>
+                       <ion-icon name="close"item-right color="danger"></ion-icon>
+                    </ng-container>
+         
+                    <ng-template #PermitRootLogin >
+               <ng-container *ngIf="data.PermitRootLogin == 'no'; else NotFoundPermitRootLogin ">
+                  [Safe]: Set to <i>{{data.PermitRootLogin}}</i>
+                  <ion-icon name="checkmark" item-right color="secondary"></ion-icon> 
+                </ng-container>
+                     </ng-template> 
+               
+               <ng-template #NotFoundPermitRootLogin>[failed]: <i>Value is not Set</i>
+                <ion-icon name="close"item-right color="danger"></ion-icon>
+              </ng-template>			
+               
+                  </ion-item>
+                 </ion-card>
+<!-- Third Card End-->
+
+
+<!-- Fourth Card Start-->
+                 <ion-card>
+                    <ion-item>
+                      <h1>Configure SSH to use PAM</h1>
+                     <ng-container *ngIf="data.UsePAM == 'no'; else UsePAM ">
+                        [failed]: Set to <i>{{data.UsePAM}}</i>
+                         <ion-icon name="close"item-right color="danger"></ion-icon>
+                      </ng-container>
+           
+                      <ng-template #UsePAM >
+                 <ng-container *ngIf="data.UsePAM == 'yes'; else NotFoundUsePAM ">
+                    [Safe]: Set to <i>{{data.UsePAM}}</i>
+                    <ion-icon name="checkmark" item-right color="secondary"></ion-icon> 
+                  </ng-container>
+                       </ng-template> 
+                 
+                 <ng-template #NotFoundUsePAM>[failed]: <i>Value is not Set</i>
+                  <ion-icon name="close"item-right color="danger"></ion-icon>
+                </ng-template>			
+                 
+                    </ion-item>
+                   </ion-card>
+<!-- Fourth Card End-->
+
+
+<!-- Fifth Card Start-->
+                   <ion-card>
+                      <ion-item>
+                        <h1>Use of X11Forwarding</h1>
+                       <ng-container *ngIf="data.X11Forwarding == 'yes'; else X11Forwarding ">
+                          [failed]: Set to <i>{{data.X11Forwarding}}</i>
+                         
+                           <ion-icon name="close"item-right color="danger"></ion-icon>
+                        </ng-container>
+             
+                        <ng-template #X11Forwarding >
+                   <ng-container *ngIf="data.X11Forwarding == 'yes'; else NotFoundX11Forwarding ">
+                      [Safe]: Set to <i>{{data.X11Forwarding}}</i>
+                      <ion-icon name="checkmark" item-right color="secondary"></ion-icon> 
+                    </ng-container>
+                         </ng-template> 
+                   
+                   <ng-template #NotFoundX11Forwarding>[failed]: <i>Value is not Set</i>
+                    <ion-icon name="close"ng-item-right color="danger"></ion-icon>
+                  </ng-template>			
+                  
+                      </ion-item>
+                     </ion-card>
+   <!-- Fifth Card end-->
+    </ion-card>
+  
+   </ion-content>
+   
+
